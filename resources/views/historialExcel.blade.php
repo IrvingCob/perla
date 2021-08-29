@@ -37,6 +37,12 @@
         </tr>
       @endforeach
     </tbody>
+    <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+          <td> <h2>Total:  <span class="text">${{ $suma }} </span></h2></td>
     
   </table>
 </body>
