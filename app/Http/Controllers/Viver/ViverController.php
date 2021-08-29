@@ -142,7 +142,7 @@ class ViverController extends Controller
             }
             else{
                 // dd('Menor');
-                $balance_end = ($vendor->saldo - $import_update);
+                $balance_end = ($vendor->saldo - $import_current) + $import_update;
             }
 
             $vendor->update(['saldo' => $balance_end]);
@@ -165,8 +165,20 @@ class ViverController extends Controller
     public function destroy($id)
     {
         $viver = Viver::findOrFail($id);
+        $vendor = Proveedor::whereId($viver->proveedor_id)->first();
+        $balance_end = $vendor->saldo - $viver->importe;
+        $vendor->update(['saldo' => $balance_end]);
+        $vendor->fresh();
+
+        // return response()->json([
+        //     'saldo actual'      => $vendor->saldo,
+        //     'imposerte viver'   => $viver->importe,
+        //     'saldo actualizado' => $balance_end,
+        // ], 200);
+
         $vendor_id = $viver->proveedor_id;
         $viver->delete();
+
         alert()->success('correctamente!', 'Eliminado');
         return redirect("viver/viver/$vendor_id/verViveres")->with('flash_message', 'Historla deleted!');
 

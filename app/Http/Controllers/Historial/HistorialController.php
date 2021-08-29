@@ -83,6 +83,12 @@ class HistorialController extends Controller
             'producto_id' => $request->producto_id,
             'proveedor_id' => $request->vendor_id,
         ]);
+
+        $vendor = Proveedor::whereId($historial->proveedor_id)->first();
+        $balance_end = $vendor->saldo - $historial->importe;
+        $vendor->update(['saldo' => $balance_end]);
+        $vendor->fresh();
+
         alert()->success('correctamente!', 'Creado');
         return redirect("historial/historial/$request->vendor_id/verHistorial")->with('flash_message', 'Historial added!');
     }
@@ -129,11 +135,33 @@ class HistorialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
-        $requestData = $request->all();
         $historial = Historial::findOrFail($id);
-        $historial->update($requestData);
+
+        $import_current = $historial->importe;
+        $import_update = $request->importe;
+
+        $vendor = Proveedor::whereId($historial->proveedor_id)->first();
+
+
+        if($import_update != $import_current)
+        {    //act => 500     ant => 1600
+            if($import_update > $import_current)  
+            {
+                // dd('Mayor');
+                $balance_end = $vendor->saldo - ($import_update - $import_current);
+            }
+            else{//Reparar 
+                // dd('Menor'); act => 500     // ant => 1600       sal => 1500 
+                $balance_end = $vendor->saldo + ($import_current + $import_update);
+            }
+
+            $vendor->update(['saldo' => $balance_end]);
+            $vendor->fresh();
+        }
+
+        $historial->update($request->all());
         $historial->fresh();
+
         alert()->success('correctamente!', 'Guardado');
         return redirect("historial/historial/$historial->proveedor_id/verHistorial")->with('flash_message', 'Historla updated!');
     }
