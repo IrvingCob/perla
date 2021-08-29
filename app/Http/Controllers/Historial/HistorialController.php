@@ -152,7 +152,7 @@ class HistorialController extends Controller
             }
             else{//Reparar 
                 // dd('Menor'); act => 500     // ant => 1600       sal => 1500 
-                $balance_end = $vendor->saldo + ($import_current + $import_update);
+                $balance_end =  ($import_current - $import_update) + $vendor->saldo ;
             }
 
             $vendor->update(['saldo' => $balance_end]);
