@@ -144,15 +144,13 @@ class HistorialController extends Controller
 
 
         if($import_update != $import_current)
-        {    //act => 500     ant => 1600
+        {
             if($import_update > $import_current)  
             {
-                // dd('Mayor');
                 $balance_end = $vendor->saldo - ($import_update - $import_current);
             }
-            else{//Reparar 
-                // dd('Menor'); act => 500     // ant => 1600       sal => 1500 
-                $balance_end =  ($import_current - $import_update) + $vendor->saldo ;
+            else{
+                $balance_end =  ($import_current - $import_update) + $vendor->saldo;
             }
 
             $vendor->update(['saldo' => $balance_end]);
@@ -176,8 +174,16 @@ class HistorialController extends Controller
     public function destroy($id)
     {
         $historial = Historial::findOrFail($id);
+        $vendor = Proveedor::whereId($historial->proveedor_id)->first();
+
+        $balance_end = $vendor->saldo + $historial->importe;
+
+        $vendor->update(['saldo' => $balance_end]);
+        $vendor->fresh();
+
         $vendor_id = $historial->proveedor_id;
         $historial->delete();
+        
         alert()->success('correctamente!', 'Eliminado');
         return redirect("historial/historial/$vendor_id/verHistorial")->with('flash_message', 'Historla deleted!');
     }
