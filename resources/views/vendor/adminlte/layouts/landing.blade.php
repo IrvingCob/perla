@@ -85,7 +85,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form">
                     <div class="item">
-                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <i class="fa fa-user" aria-hidden="true" style="margin-right: 6px;"></i>
                         <input type="email" class="form-control" placeholder="{{ trans('Correo') }}" name="email"/>
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
