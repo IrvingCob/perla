@@ -30,9 +30,11 @@ class ViverExport implements FromView
         $viveres = DB::table('viver')
         ->whereIn('viver.id',$this->data_id)
                        ->get();
+        $suma = $viveres->sum('importe');
 
         return view('viverExcel', [
             'viveres' => $viveres,
+            'suma' => $suma,
         ]);
     }
     /**

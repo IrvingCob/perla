@@ -25,7 +25,7 @@
                             <table class="TFtable">
                                 <thead>
                                     <tr id="columna1">
-                                        <th>#</th><th>Status</th><th>Actions</th>
+                                        <th>#</th><th>Status</th><th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,14 +34,14 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>
-                                            <a href="{{ url('/status/status/' . $item->id) }}" title="View Bitacora"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
-                                            <a href="{{ url('/status/status/' . $item->id . '/edit') }}" title="Edit Bitacora"><button class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                                            
+                                            <a href="{{ url('/status/status/' . $item->id . '/edit') }}" title="Modificar"><button class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
                                            
 
                                             <form method="POST" action="{{ url('/status/status' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Bitacora" onclick="return confirm(&quot;Seguro que desea eliminar este registro?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Eliminar" onclick="return confirm(&quot;Seguro que desea eliminar este registro?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                             </form>
                                         </td>
                                     </tr>

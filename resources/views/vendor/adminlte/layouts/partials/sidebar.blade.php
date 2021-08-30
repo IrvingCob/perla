@@ -41,7 +41,6 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-search'></i> <span>{{ trans('Filtros') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('bitacoras/bitacoras') }}"><i class='fa fa-window-restore'></i>{{ trans('Bitacoras') }}</a></li>
                     <li><a href="{{ url('historiales/historiales') }}"><i class='fa fa-window-restore'></i>{{ trans('Historiales') }}</a></li>
                     <li><a href="{{ url('viveres/viveres') }}"><i class='fa fa-window-restore'></i>{{ trans('Viveres') }}</a></li>
                 </ul>

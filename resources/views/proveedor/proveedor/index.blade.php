@@ -50,8 +50,8 @@
                                         <th><center>Telefono</center></th>
                                         <th><center>Embarcacion</center></th>
                                         <th><center>Referencia</center></th>
-                                        <th><center>Acciones</center></th>
                                         <th><center>Seguimiento</center></th>
+                                        <th><center>Acciones</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,14 +65,8 @@
                                         <td>{{ $item->referencia }}</td>
                                         <td>
                                             
-                                            <a href="{{ url('/proveedor/proveedor/' . $item->id . '/edit') }}" title="Modifica"><button class="buttonActions"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
-
-                                            <form method="POST" action="{{ url('/proveedor/proveedor' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="buttonActions2" title="Eliminar" onclick="return confirm(&quot;¿Seguro que quiere eliminar este registro?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </form>
-                                            <td><a href="{{ url('/bitacora/bitacora/' . $item->id.'/verBitacora') }}" class="button" title="Ver Bitacora"> <span> Bitacora   </span></a>
+                                          
+                                           <!--  <td><a href="{{ url('/bitacora/bitacora/' . $item->id.'/verBitacora') }}" class="button" title="Ver Bitacora"> <span> Bitacora   </span></a>-->
                                                
 
                                                 <a href="{{ url('/historial/historial/' . $item->id.'/verHistorial') }}" class="button2" title="Ver Historial"><span> Historial   </span></a>
@@ -81,8 +75,15 @@
 
 
                                              <a href="#" class="button4" title="Ver viveres" data-toggle="modal" id data-target="#exampleModalCenter{{ $item->id }}"><span> Saldo   </span></a>
+                                           </td>
+                                           <td>
+                                             <a href="{{ url('/proveedor/proveedor/' . $item->id . '/edit') }}" title="Modificar"><button class="buttonActions"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
 
-                                             
+                                            <form method="POST" action="{{ url('/proveedor/proveedor' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="buttonActions2" title="Eliminar" onclick="return confirm(&quot;¿Seguro que quiere eliminar este registro?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                            </form>
                                         
                                         
                                     </tr>
@@ -142,6 +143,7 @@
     }
     th{
         color: white;
+        text-align: center;
     }
      .TFtable{
         width:100%; 

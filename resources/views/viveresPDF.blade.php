@@ -76,11 +76,11 @@ header{ position: relative;
   <thead>
         <tr>  
            <th>#</th>
+          <th>Fecha</th>
           <th>Nombre</th>
           <th>Cantidad</th>ç
           <th>Precio / u</th>
           <th>Importe</th>
-          <th>Fecha</th>
           <th>Proveedor</th>
         </tr>
   </thead>
@@ -88,11 +88,12 @@ header{ position: relative;
     @foreach ($buscar as $personal)
  <tr>
 <td>{{ $loop->iteration}}</td>
+
+<td>{{ $personal->fecha }}</td>
 <td>{{ $personal->nombre }}</td>
 <td>{{ $personal->cantidad }}</td>
-<td>{{ $personal->precio }}</td>
-<td>{{ $personal->importe }}</td>
-<td>{{ $personal->fecha }}</td>
+<td>${{ $personal->precio }}</td>
+<td>${{ $personal->importe }}</td>
 
 @php($proveedor = App\Models\Proveedor::findOrNew($personal->proveedor_id)->nombre)
 <td>{{ $proveedor }}</td>
@@ -102,6 +103,14 @@ header{ position: relative;
 @endforeach
   
   </tbody>
+
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+          <td> <b>Total:  <span class="text">${{ $suma }} </span></b></td>
 </table>
 
 </div>

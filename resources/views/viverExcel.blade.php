@@ -7,12 +7,12 @@
   <table>
     <thead>
        <tr>  
-         <th style="background-color: #A5A2A2">#</th>
-         <th style="background-color: #A5A2A2">Fecha</th>
-         <th style="background-color: #A5A2A2">Proveedor</th>
-         <th style="background-color: #A5A2A2">Cantidad</th>
-         <th style="background-color: #A5A2A2">Precio / u</th>
-         <th style="background-color: #A5A2A2">Importe</th>
+         <th style="background-color: #A5A2A2"><b>#</b></th>
+         <th style="background-color: #A5A2A2"><b>Fecha</b></th>
+         <th style="background-color: #A5A2A2"><b>Proveedor</b></th>
+         <th style="background-color: #A5A2A2"><b>Cantidad</b></th>
+         <th style="background-color: #A5A2A2"><b>Precio / u</b></th>
+         <th style="background-color: #A5A2A2"><b>Importe</b></th>
        </tr>
     </thead>
     <tbody>
@@ -23,13 +23,14 @@
           @php($proveedor = App\Models\Proveedor::findOrNew($viver->proveedor_id)->nombre)
           <td>{{ $proveedor }}</td>
           <td>{{ $viver->cantidad }}</td>
-          <td>{{ $viver->precio }}</td>
-          <td>{{ $viver->importe }}</td>
+          <td>${{ $viver->precio }}</td>
+          <td>${{ $viver->importe }}</td>
           
         </tr>
       @endforeach
     </tbody>
   </table>
+  <td></td><td></td><td></td><td></td><td></td><h5>Total:  <span class="text">${{ $suma }} </span></h5>
 </body>
 </html>
 

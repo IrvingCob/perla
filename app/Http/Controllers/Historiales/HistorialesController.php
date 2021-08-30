@@ -162,7 +162,7 @@ class HistorialesController extends Controller
         //
 
         $pdf = PDF::loadView('historialPDF',['buscar' => $historiales, 'suma' => $suma])->setPaper('a3', 'landscape');
-        return $pdf->download('Historial.pdf');
+        return $pdf->download('Historial('.now()->format('d-m-Y').').pdf');
     }
 
      protected function parse_id($data)

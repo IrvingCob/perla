@@ -139,8 +139,13 @@ public function index(Request $request)
     {
         $buscar = json_decode($data);
         $viveres = Viver::whereIn('id',$buscar)->get();
-        $pdf = PDF::loadView('viveresPDF',['buscar' => $viveres])->setPaper('a3', 'landscape');
-        return $pdf->download('Viver.pdf');
+        //Suma y resultados Inyectamos suma y lo pasamos como parametro en la vista para traer el resultado del total de la suma
+
+        $suma = $viveres->sum('importe');
+
+        //
+        $pdf = PDF::loadView('viveresPDF',['buscar' => $viveres, 'suma' => $suma])->setPaper('a3', 'landscape');
+        return $pdf->download('Viver('.now()->format('d-m-Y').').pdf');
     }
 
     protected function parse_id($data)

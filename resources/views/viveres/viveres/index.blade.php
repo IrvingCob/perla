@@ -24,15 +24,15 @@
                             <button class="btn btn-info" type="submit">Export as PDF</button>
                         </form>--}}
 
-                        <a href="{{ route('viveres.exportpdf',$data) }}" title="View Personal"><button class="btn btn-primary mb1 bg-red btn-sm"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Exportar busqueda</button></a>
+                        <a href="{{ route('viveres.exportpdf',$data) }}" title="PDF"><button class="btn btn-primary mb1 bg-red btn-sm"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Exportar a PDF</button></a>
 
-                        <a href="{{ route('viveres.exportxls',$data) }}" class="btn btn-success">Export to .xls</a>
+                        <a href="{{ route('viveres.exportxls',$data) }}" title="EXCEL" class="btn btn-success btn-sm"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Exportar a Excel</a>
 
 
                         <form method="GET" action="{{ route('viveres.index') }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
                             
                             
-                                <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                                <input type="text" class="form-control" name="search" placeholder="Buscar..." value="{{ request('search') }}">
                                 <span class="input-group-append">
                                     <button class="btn btn-default" type="submit">
                                         <i class="fa fa-search"></i>
