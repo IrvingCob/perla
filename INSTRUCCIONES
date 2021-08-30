@@ -1,0 +1,26 @@
+
+
+PROYECTO DE ADMINISTRACION DE PROVEEDORES
+
+FINALIZADO EL 30 DE AGOSTO DEL 2021
+
+
+
+Istrucciones
+
+
+La versión utilizada es LARAVEL FRAMEWORK 5.6
+
+Para instalar este proyecto en tu repositorio es ejecutar los siguientes comando en consola
+
+
+C:/ perla
+
+
+c:/ perla:/ composer install
+
+
+c:/ perla:/ php artisan key:generate
+
+
+en caso de no haberse creado el archivo .env crearlo manualmente y crear nuevamente el key   
