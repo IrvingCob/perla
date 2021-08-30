@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Proveedor;
 use App\Models\Bitacora;
 use Illuminate\Http\Request;
+use DB;
+use PDF;
 
 class ProveedorController extends Controller
 {
@@ -128,5 +130,18 @@ class ProveedorController extends Controller
     public function ayuda(){
 
         return view('proveedor.proveedor.ayuda');
+    }
+
+    public function ticket($id){
+
+        $proveedor = Proveedor::findOrFail($id);
+
+        $proveedor = DB::select('select * from proveedor where id = ?', [$id]);
+
+
+
+        $pdf = PDF::loadView('/ticket', ['proveedor' => $proveedor]); //Aqui se hace la inyección de la variable
+        
+        return $pdf->stream('ticket.pdf', compact('proveedor'));
     }
 }

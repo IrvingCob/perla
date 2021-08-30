@@ -157,7 +157,7 @@ class HistorialesController extends Controller
 
         //Suma y resultados Inyectamos suma y lo pasamos como parametro en la vista para traer el resultado del total de la suma
 
-        $suma = $historiales->sum('precio');
+        $suma = $historiales->sum('importe');
 
         //
 

@@ -108,8 +108,9 @@ header{ position: relative;
           <td></td>
           <td></td>
           <td></td>
+          <td></td>
 
-          <td> <h2>Total:  <span class="text">${{ $suma }} </span></h2></td>
+          <td> <b>Total:  <span class="text">${{ $suma }} </span></b></td>
                        
 </table>
 
@@ -122,10 +123,6 @@ echo $diassemana[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".da
 //Salida: Miercoles 05 de Septiembre del 2016
  
 ?>
-
-
-  
-
 </footer>
 
 

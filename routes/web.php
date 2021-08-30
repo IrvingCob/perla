@@ -59,6 +59,9 @@ Route::get('/bitacoras-reports/{id}','Bitacoras\BitacorasController@exportpdf')-
 Route::get('/historiales-reports/{id}','Historiales\HistorialesController@exportpdf')->name('historiales.exportpdf');
 Route::get('/viveres-reports/{id}','Viveres\ViveresController@exportpdf')->name('viveres.exportpdf');
 
+Route::get('/ticket/{id}', 'Proveedor\ProveedorController@ticket');
+
+
 // Excel
 
 

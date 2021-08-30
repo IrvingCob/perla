@@ -31,7 +31,7 @@ class HistorialExport implements FromView
         ->whereIn('historial.id',$this->data_id)
                        ->get();
 
-        $suma = $historiales->sum('precio');
+        $suma = $historiales->sum('importe');
 
         return view('historialExcel', [
             'historiales' => $historiales,

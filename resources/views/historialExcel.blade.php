@@ -29,22 +29,19 @@
 <td>{{ $producto }}</td>
           
           <td>{{ $historial->cantidad }}</td>
-          <td>{{ $historial->precio }}</td>
-          <td>{{ $historial->importe }}</td>
+          <td>${{ $historial->precio }}</td>
+          <td>${{ $historial->importe }}</td>
          @php($status = App\Models\Status::findOrNew($historial->status_id)->status)
 <td>{{ $status }}</td>
           
         </tr>
       @endforeach
-    </tbody>
-    <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
 
-          <td> <h2>Total:  <span class="text">${{ $suma }} </span></h2></td>
+    </tbody>
+    
     
   </table>
+  <td></td><td></td><td></td><td></td><td></td><td></td><h5>Total:  <span class="text">${{ $suma }} </span></h5>
 </body>
 </html>
 
